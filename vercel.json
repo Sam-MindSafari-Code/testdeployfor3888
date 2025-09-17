@@ -1,13 +1,13 @@
 {
   "version": 2,
   "functions": {
-    "api/**": {
+    "api/index.py": {
       "includeFiles": "backend/**"
     }
   },
   "routes": [
-    { "src": "^/$", "dest": "/api" },
-    { "src": "^(?!/api/).*", "dest": "/api$0" }
+    { "src": "^/$", "dest": "/api/index.py" },
+    { "src": "^(?!/api/).*", "dest": "/api/index.py" }
   ],
   "regions": ["syd1"]
 }
