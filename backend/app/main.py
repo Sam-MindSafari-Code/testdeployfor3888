@@ -15,9 +15,13 @@ from fastapi.responses import RedirectResponse, JSONResponse
 
 app = FastAPI()
 
-# don't crash if /static isn't present at cold start on Vercel
+# Avoid startup crash if /static isn't visible at cold start
 static_dir = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=static_dir, check_dir=False), name="static")
+
+@app.get("/health", include_in_schema=False)
+async def health():
+    return JSONResponse({"ok": True})
 
 @app.get("/", include_in_schema=False) # did this because for some reason in terminal the link didn't take me directly to docs
 async def redirect_to_docs():
