@@ -12,8 +12,9 @@ import json
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.responses import RedirectResponse, JSONResponse
 
-app = FastAPI()
-app.mount("/static", StaticFiles(directory=Path(__file__).parent / "static"), name="static")
+static_dir = Path(__file__).parent / "static"
+app.mount("/static", StaticFiles(directory=static_dir, check_dir=False), name="static")
+
 @app.get("/", include_in_schema=False) # did this because for some reason in terminal the link didn't take me directly to docs
 async def redirect_to_docs():
     return RedirectResponse(url="/login", status_code=302)
