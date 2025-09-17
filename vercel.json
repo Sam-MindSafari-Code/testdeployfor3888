@@ -6,9 +6,8 @@
     }
   },
   "routes": [
-    { "src": "^/$", "dest": "/api/main" },
-    { "src": "^/api/.*", "dest": "/api/main" },
-    { "src": "^(?!/api/).*", "dest": "/api/main" }
+    { "src": "^/$", "dest": "/api" },
+    { "src": "^(?!/api/).*", "dest": "/api$0" }
   ],
   "regions": ["syd1"]
 }
