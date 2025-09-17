@@ -1,12 +1,11 @@
 {
   "version": 2,
   "functions": {
-    "api/index.py": {
-      "includeFiles": "backend/**"
-    }
+    "api/index.py": { "includeFiles": "backend/**" }
   },
   "routes": [
     { "src": "^/$", "dest": "/api/index.py" },
+    { "src": "^/api/.*", "dest": "/api/index.py" },
     { "src": "^(?!/api/).*", "dest": "/api/index.py" }
   ],
   "regions": ["syd1"]
