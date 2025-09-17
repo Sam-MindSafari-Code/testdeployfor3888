@@ -296,7 +296,8 @@
       
       try {
         // Load projects data
-        const projectsResponse = await fetch('/admin/projects');
+        // using the api instead
+        const projectsResponse = await fetch('/api/projects', { credentials: 'include' });
         projectsData = await projectsResponse.json();
         
         if (!Array.isArray(projectsData)) {
