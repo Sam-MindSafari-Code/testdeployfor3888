@@ -15,7 +15,7 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory=Path(__file__).parent / "static"), name="static")
 @app.get("/", include_in_schema=False) # did this because for some reason in terminal the link didn't take me directly to docs
 async def redirect_to_docs():
-    return RedirectResponse(url="/docs")
+    return RedirectResponse(url="/login", status_code=302)
 
 # Load users
 def load_users():
