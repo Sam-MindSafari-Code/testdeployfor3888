@@ -12,6 +12,10 @@ import json
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.responses import RedirectResponse, JSONResponse
 
+
+app = FastAPI()
+
+# don't crash if /static isn't present at cold start on Vercel
 static_dir = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=static_dir, check_dir=False), name="static")
 
