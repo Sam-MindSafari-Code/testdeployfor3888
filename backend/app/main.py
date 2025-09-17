@@ -6,6 +6,7 @@ from pathlib import Path
 from fastapi.staticfiles import StaticFiles
 from fastapi import Body
 from fastapi import Request
+from fastapi import Response
 from fastapi import Form
 import json
 from starlette.exceptions import HTTPException as StarletteHTTPException
@@ -52,6 +53,11 @@ async def serve_not_authorized():
     html_path = Path(__file__).parent / "static" / "not_authorized.html"
     return FileResponse(html_path)
 
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    # Return 204 so browsers stop retrying if you don't have a favicon file bundled
+    return Response(status_code=204)
+
 # Login endpoint
 @app.post("/login-check")
 async def login(username: str = Form(...), password: str = Form(...), role: str = Form(...)):
@@ -74,7 +80,14 @@ async def login(username: str = Form(...), password: str = Form(...), role: str 
 @app.get("/login", include_in_schema=False)
 async def serve_login_page():
     html_path = Path(__file__).parent / "static" / "login.html"
+    if not html_path.exists():
+        # Helpful debug: report what path the function is trying to read
+        return JSONResponse(
+            {"error": "login.html not found", "looked_for": str(html_path)},
+            status_code=500
+        )
     return FileResponse(html_path)
+
 
 # Logout
 @app.get("/logout", include_in_schema=False)
