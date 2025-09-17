@@ -1,21 +1,8 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.py": {
-      "runtime": "python3.11"
-    }
-  },
   "routes": [
-    {
-      "src": "^/$",
-      "dest": "/api/login"
-    },
-    {
-      "src": "^(?!/api/).*",
-      "dest": "/api$0"
-    }
+    { "src": "^/$", "dest": "/api/login" },
+    { "src": "^(?!/api/).*", "dest": "/api$0" }
   ],
-  "regions": [
-    "syd1"
-  ]
+  "regions": ["syd1"]
 }
