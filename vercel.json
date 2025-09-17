@@ -1,5 +1,10 @@
 {
   "version": 2,
+  "functions": {
+    "api/**": {
+      "includeFiles": ["backend/**"]
+    }
+  },
   "routes": [
     { "src": "^/$", "dest": "/api/login" },
     { "src": "^(?!/api/).*", "dest": "/api$0" }
