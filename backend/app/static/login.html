@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Project Allocation System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    .title {
+      font-size: 2.2em;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      gap: 40px;
+    }
+    .login-box {
+      background: rgba(255,255,255,0.95);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 320px;
+    }
+    h1 {
+      font-size: 1.6em;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      font-weight: 500;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      border-radius: 12px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border: none;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="title">Welcome to Project Allocation</div>
+
+  <div class="container">
+    <!-- Student Login -->
+    <div class="login-box">
+      <h1>Student Login</h1>
+      <form method="post" action="/login-check">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="hidden" name="role" value="student" />
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+
+    <!-- Admin Login -->
+    <div class="login-box">
+      <h1>Admin Login</h1>
+      <form method="post" action="/login-check">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="hidden" name="role" value="admin" />
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

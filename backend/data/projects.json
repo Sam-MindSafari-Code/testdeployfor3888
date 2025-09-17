@@ -1,0 +1,1050 @@
+[
+  {
+    "id": "P01",
+    "title": "OurVoice",
+    "client": "OurVoice",
+    "required_skills": [
+      "Software Development",
+      "Web Development",
+      "Security",
+      "AI",
+      "Algorithms",
+      "NextJS"
+    ],
+    "related_disciplines": [
+      "Software Development",
+      "Web Development",
+      "AI",
+      "Algorithms"
+    ]
+  },
+  {
+    "id": "P02",
+    "title": "Creating a visualization tool for 4D image surveys",
+    "client": "Image X Institute",
+    "required_skills": [
+      "Python",
+      "Web Development"
+    ],
+    "related_disciplines": [
+      "Software Development",
+      "Web Development",
+      "Bioinformatics/Biomedical"
+    ]
+  },
+  {
+    "id": "P03",
+    "title": "Game-based learning and students’ motivation in construction management education",
+    "client": "School of Civil Engineering",
+    "required_skills": [
+      "Web Development",
+      "EndNote",
+      "Scratch/Ardublock/mBlock/Minibloq"
+    ],
+    "related_disciplines": [
+      "Web Development",
+      "Software Development",
+      "VR/AR"
+    ]
+  },
+  {
+    "id": "P04",
+    "title": "Artificial intelligence and smart vision for building and construction 4.0",
+    "client": "School of Civil Engineering",
+    "required_skills": [
+      "AI",
+      "ML",
+      "DL",
+      "Web Development",
+      "EndNote"
+    ],
+    "related_disciplines": [
+      "Artificial Intelligence",
+      "VR/AR"
+    ]
+  },
+  {
+    "id": "P05",
+    "title": "Concussion Detection and Action Plan App",
+    "client": "Faculty of Medicine and Health",
+    "required_skills": [
+      "Android Development",
+      "ML",
+      "Data Analytics"
+    ],
+    "related_disciplines": [
+      "Software Development",
+      "Data Science/Analytics",
+      "Bioinformatics/Biomedical",
+      "Algorithms"
+    ]
+  },
+  {
+    "id": "P06",
+    "title": "Investigating the Underlying Technologies and Mechanisms behind Large Language Models",
+    "client": "UNSW",
+    "required_skills": [
+      "Transformers",
+      "Attention Mechanisms",
+      "Pre-training/Fine-tuning",
+      "Prompt Engineering",
+      "Ethics"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics",
+      "Artificial Intelligence",
+      "NLP"
+    ]
+  },
+  {
+    "id": "P07",
+    "title": "Design and Development of a Paper Digitization Web Application",
+    "client": "UNSW",
+    "required_skills": [
+      "MERN Stack",
+      "OCR",
+      "Figma",
+      "Agile",
+      "Docker",
+      "CI/CD",
+      "Cloud Deployment"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Web Development",
+      "Software Development"
+    ]
+  },
+  {
+    "id": "P08",
+    "title": "Developing a mental health chatbot",
+    "client": "UTS Data Science Institute",
+    "required_skills": [
+      "ML",
+      "NLP",
+      "Python",
+      "Web Development"
+    ],
+    "related_disciplines": [
+      "Artificial Intelligence",
+      "Web Development",
+      "Software Development"
+    ]
+  },
+  {
+    "id": "P09",
+    "title": "MVP Build for Legal Tech Web Application",
+    "client": "Vale",
+    "required_skills": [
+      "Web Development",
+      "Cloud Deployment",
+      "AI",
+      "Information Systems"
+    ],
+    "related_disciplines": [
+      "Web Development",
+      "Software Development",
+      "AI",
+      "Cloud Computing",
+      "Information Systems"
+    ]
+  },
+  {
+    "id": "P10",
+    "title": "NSW Youth Justice Chart",
+    "client": "NSW Youth Justice",
+    "required_skills": [
+      "JavaScript",
+      "Python",
+      "React",
+      "Angular",
+      "Unity",
+      "UX",
+      "Database",
+      "Git"
+    ],
+    "related_disciplines": [
+      "VR/AR",
+      "Cloud Computing",
+      "AI",
+      "Data Science/Analytics",
+      "Software Development",
+      "Web Development",
+      "Algorithms"
+    ]
+  },
+  {
+    "id": "P11",
+    "title": "Develop Shiny app of remotely sensed livestock data to share with farmers and other industry partners",
+    "client": "USYD/SOLES",
+    "required_skills": [
+      "R",
+      "Shiny"
+    ],
+    "related_disciplines": [
+      "Web Development",
+      "Information Systems",
+      "Cloud Computing",
+      "Bioinformatics/Biomedical",
+      "Data Science/Analytics",
+      "Software Development"
+    ]
+  },
+  {
+    "id": "P12",
+    "title": "Cancer Cell Structure Analysis",
+    "client": "SCS academic",
+    "required_skills": [
+      "Algorithms",
+      "Python",
+      "ML",
+      "DL",
+      "CV",
+      "Image Processing",
+      "Graph Analysis"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics",
+      "AI",
+      "Bioinformatics/Biomedical"
+    ]
+  },
+  {
+    "id": "P13",
+    "title": "Visualization tool for scene graph",
+    "client": "SCS academic",
+    "required_skills": [
+      "Web Development",
+      "JavaScript",
+      "Python"
+    ],
+    "related_disciplines": [
+      "Web Development",
+      "Data Visualization",
+      "Data Analysis"
+    ]
+  },
+  {
+    "id": "P14",
+    "title": "Sustainable feed formulation program for commercial chicken production",
+    "client": "Faculty of Science, SOLES",
+    "required_skills": [
+      "Programming",
+      "Data Analysis",
+      "Interactive Software/App Development"
+    ],
+    "related_disciplines": [
+      "Web Development",
+      "Software Development",
+      "Algorithms",
+      "Data Science/Analytics"
+    ]
+  },
+  {
+    "id": "P15",
+    "title": "Automated airway segmentation and quantification on CT using 3D deep learning",
+    "client": "CSIRO, Australian e-health research centre",
+    "required_skills": [
+      "Python",
+      "Deep Learning",
+      "Image Analysis",
+      "MATLAB",
+      "Docker"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "AI",
+      "Data Science/Analytics"
+    ]
+  },
+  {
+    "id": "P16",
+    "title": "3D Latticing",
+    "client": "Asiga",
+    "required_skills": [
+      "Python",
+      "C++",
+      "3D Geometry",
+      "Mesh Modeling",
+      "Algorithm Design"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Software Development"
+    ]
+  },
+  {
+    "id": "P17",
+    "title": "Automatic Part Nesting",
+    "client": "Asiga",
+    "required_skills": [
+      "C++",
+      "Algorithm Design",
+      "Software Development"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Software Development"
+    ]
+  },
+  {
+    "id": "P18",
+    "title": "Automatic Quality Measure of Dental Intraoral 3D Scan Data",
+    "client": "Asiga",
+    "required_skills": [
+      "Python",
+      "C++",
+      "Software Development",
+      "Image Processing",
+      "ML"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Software Development",
+      "Bioinformatics/Biomedical",
+      "Data Science/Analytics",
+      "AI"
+    ]
+  },
+  {
+    "id": "P19",
+    "title": "Chatbot for 3D Printer Technical Support",
+    "client": "Asiga",
+    "required_skills": [
+      "Web Development",
+      "LLM Integration",
+      "Software Development"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Web Development",
+      "Software Development",
+      "AI",
+      "NLP"
+    ]
+  },
+  {
+    "id": "P20",
+    "title": "Dental Bite and Occlusal Surface Identification from 3D Scan Data",
+    "client": "Asiga",
+    "required_skills": [
+      "Python",
+      "C++",
+      "Computational Geometry",
+      "Optimization",
+      "Algorithm Design"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics",
+      "Software Development",
+      "Bioinformatics/Biomedical"
+    ]
+  },
+  {
+    "id": "P21",
+    "title": "Kitchen Design Generator",
+    "client": "RenoPilot Pty Limited",
+    "required_skills": [
+      "OOP (C# or JavaScript)",
+      "Git",
+      "GitHub",
+      "R",
+      "R/Shiny",
+      "C#",
+      "JavaScript",
+      "Object-Oriented Programming",
+      "Shiny",
+      "Database"
+    ],
+    "related_disciplines": [
+      "Software Development"
+    ]
+  },
+  {
+    "id": "P22",
+    "title": "PKcalcs",
+    "client": "Pharmacy / Pharmacology",
+    "required_skills": [
+      "Python",
+      "JavaScript",
+      "Web Development",
+      "GitHub Pages",
+      "Jekyll",
+      "HTML",
+      "CSS"
+    ],
+    "related_disciplines": [
+      "Web Development"
+    ]
+  },
+  {
+    "id": "P23",
+    "title": "Provider Fee & Territory Module",
+    "client": "RenoPilot Pty Limited",
+    "required_skills": [
+      "OOP (C# or JavaScript)",
+      "Git",
+      "GitHub",
+      "R",
+      "R/Shiny",
+      "HTML",
+      "CSS",
+      "Server-side Development",
+      "C#",
+      "JavaScript",
+      "Shiny",
+      "Database"
+    ],
+    "related_disciplines": [
+      "Software Development",
+      "Data Science/Analytics"
+    ]
+  },
+  {
+    "id": "P24",
+    "title": "Inspiration & DIY Portal & Database",
+    "client": "RenoPilot Pty Limited",
+    "required_skills": [
+      "Git",
+      "VS Code",
+      "Node.js",
+      "Express.js",
+      "APIs",
+      "HTML5",
+      "CSS3",
+      "SQL (SQLite/MySQL/Oracle/Azure SQL)",
+      "GitHub Projects",
+      "REST",
+      "Microsoft SQL",
+      "Azure SQL",
+      "SQLite",
+      "MySQL",
+      "Oracle SQL"
+    ],
+    "related_disciplines": [
+      "Web Development",
+      "Software Development"
+    ]
+  },
+  {
+    "id": "P25",
+    "title": "Painting Cost App",
+    "client": "RenoPilot Pty Limited",
+    "required_skills": [
+      "OOP (C# or JavaScript)",
+      "Git",
+      "GitHub",
+      "R",
+      "R/Shiny",
+      "HTML",
+      "CSS",
+      "SQL (SQLite/MySQL/Oracle/Azure SQL)",
+      "C#",
+      "JavaScript",
+      "Shiny",
+      "Microsoft SQL",
+      "Azure SQL",
+      "SQLite",
+      "MySQL",
+      "Oracle SQL"
+    ],
+    "related_disciplines": [
+      "Software Development",
+      "Web Development"
+    ]
+  },
+  {
+    "id": "P26",
+    "title": "Converting Landmark AI Papers to Interactive Mathematica Workbooks",
+    "client": "Strong Compute",
+    "required_skills": [
+      "Advanced Mathematics",
+      "Mathematica",
+      "Deep Learning Papers",
+      "Mathematical Modelling",
+      "Advanced Computer Science"
+    ],
+    "related_disciplines": [
+      "AI",
+      "Data Science/Analytics",
+      "Algorithms",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P27",
+    "title": "Deploying the best of MLPerf on Strong Compute’s hardware",
+    "client": "Strong Compute",
+    "required_skills": [
+      "Deep Learning (PyTorch)",
+      "Linux (Ubuntu)",
+      "CUDA",
+      "Networking",
+      "Storage Config",
+      "MLPerf",
+      "PyTorch",
+      "Weights & Biases",
+      "Nvidia Drivers",
+      "Storage Configuration"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "AI",
+      "Data Science/Analytics",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P28",
+    "title": "Putting the best of MONAI on Strong Compute’s Instant Super Computer (ISC)",
+    "client": "Strong Compute",
+    "required_skills": [
+      "Deep Learning",
+      "MONAI Framework",
+      "GPU Computing",
+      "MONAI",
+      "PyTorch"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "AI",
+      "Data Science/Analytics",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P29",
+    "title": "Accelerating Torchvision With Halide",
+    "client": "Strong Compute",
+    "required_skills": [
+      "Torchvision",
+      "Halide",
+      "Mathematics",
+      "Optimization",
+      "Computer Vision",
+      "Benchmarking",
+      "Profiling",
+      "Performance Tuning",
+      "Optimisation"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "AI",
+      "Data Science/Analytics",
+      "Computer Vision",
+      "Optimisation",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P30",
+    "title": "Mobile App for Ag. Data",
+    "client": "SCS academic",
+    "required_skills": [
+      "Mobile App Development (iOS/Android)",
+      "UI/UX",
+      "Backend Development",
+      "Node.js",
+      "Django",
+      "MySQL",
+      "APIs",
+      "Swift",
+      "iOS",
+      "Java",
+      "Kotlin",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "API Development",
+      "Agile",
+      "Testing"
+    ],
+    "related_disciplines": [
+      "Web Development",
+      "Software Development",
+      "Cloud Computing",
+      "Mobile App Development",
+      "Mobile app development"
+    ]
+  },
+  {
+    "id": "P31",
+    "title": "Annotation Portal",
+    "client": "SCS academic",
+    "required_skills": [
+      "Python",
+      "Web Development",
+      "Software Development",
+      "Database",
+      "Image Segmentation",
+      "Programming",
+      "Web/Software Development",
+      "Image Segmentation (basic)",
+      "Prior Experience (Software Dev >85)"
+    ],
+    "related_disciplines": [
+      "Web Development",
+      "Software Development"
+    ]
+  },
+  {
+    "id": "P32",
+    "title": "In-depth Evaluation on Traffic Scene Understanding Studies for Autonomous Vehicles",
+    "client": "SCS academic",
+    "required_skills": [
+      "Literature Review",
+      "DL (CNN,DNN,GNN)",
+      "CV",
+      "Analysis",
+      "Python",
+      "DL (CNN/DNN/GNN)",
+      "Computer Vision",
+      "WAM>80"
+    ],
+    "related_disciplines": [
+      "AI",
+      "Robotics",
+      "Image Processing",
+      "Computer Vision",
+      "Deep Learning",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P33",
+    "title": "DL/AI Algorithms Development for Multi-task Learning on Traffic Images for Autonomous Vehicles",
+    "client": "SCS academic",
+    "required_skills": [
+      "DL (CNN,DNN,GNN)",
+      "CV",
+      "Object Detection",
+      "Image Segmentation",
+      "Python",
+      "PyTorch",
+      "Linux",
+      "DL (CNN/DNN/GNN)",
+      "Segmentation"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics",
+      "AI",
+      "Robotics",
+      "Deep Learning",
+      "Computer Vision",
+      "Traffic Image Analysis",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P34",
+    "title": "Data-driven Knowledge Graph Construction for Autonomous Vehicles",
+    "client": "SCS academic",
+    "required_skills": [
+      "Data Science",
+      "Data Analysis",
+      "Literature Review",
+      "DL",
+      "CV",
+      "Graph",
+      "Python",
+      "DL/CV/Graph (nice to have)"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics",
+      "AI",
+      "Robotics",
+      "Deep Learning",
+      "Computer Vision",
+      "Traffic Image Analysis",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P35",
+    "title": "Evaluation of SOTA Deep Learning & AI Models on Benchmark Datasets & Metrics for Autonomous Vehicles",
+    "client": "SCS academic",
+    "required_skills": [
+      "DL (CNN,DNN,GNN)",
+      "CV",
+      "Image Processing",
+      "Prediction Evaluation",
+      "Python",
+      "PyTorch",
+      "Linux",
+      "DL (CNN/DNN/GNN)"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics",
+      "AI",
+      "Robotics",
+      "Deep Learning",
+      "Computer Vision",
+      "Traffic Image Analysis",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P36",
+    "title": "Patient Medical Report Generator and Management",
+    "client": "The University of Sydney School of Pharmacy",
+    "required_skills": [
+      "Django",
+      "PostgreSQL",
+      "Angular",
+      "Python",
+      "AWS",
+      "Database",
+      "NLP",
+      "HTML",
+      "CSS",
+      "ML",
+      "Data Analytics",
+      "NLP (desired)",
+      "HTML/CSS (desired)",
+      "ML/Data Analytics (desired)"
+    ],
+    "related_disciplines": [
+      "Web Development",
+      "Data Science/Analytics",
+      "Bioinformatics/Biomedical",
+      "Security/Networks",
+      "NLP"
+    ]
+  },
+  {
+    "id": "P37",
+    "title": "Advancing University Rankings Modelling with Enhanced Methodology in Rankings Modelling Tool",
+    "client": "USYD - AAP",
+    "required_skills": [
+      "ML",
+      "Data Analytics",
+      "Python",
+      "R",
+      "Predictive Modelling",
+      "PowerBI",
+      "Machine Learning",
+      "Python or R",
+      "PowerBI/Data Visualisation"
+    ],
+    "related_disciplines": [
+      "Data Science/Analytics"
+    ]
+  },
+  {
+    "id": "P38",
+    "title": "Advancing Rankings Dashboard with Automated Name Mapping System",
+    "client": "USYD - AAP",
+    "required_skills": [
+      "ML",
+      "Data Analytics",
+      "Python",
+      "PowerBI",
+      "Web Development",
+      "ETL",
+      "ETL Automation",
+      "Data Integration",
+      "PowerBI (or Web Development)",
+      "Data Visualisation"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Web Development",
+      "Data Science/Analytics",
+      "NLP"
+    ]
+  },
+  {
+    "id": "P39",
+    "title": "Ground water quality management using machine learning",
+    "client": "SCS academic",
+    "required_skills": [
+      "Python",
+      "ML",
+      "DL",
+      "GitHub",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "related_disciplines": [
+      "Data Science/Analytics",
+      "AI",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P40",
+    "title": "Electrocardiography leads reconstruction using PPG signal",
+    "client": "SCS academic",
+    "required_skills": [
+      "Python",
+      "ML",
+      "DL",
+      "GitHub",
+      "Machine Learning",
+      "Deep Learning"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics"
+    ]
+  },
+  {
+    "id": "P41",
+    "title": "Highly Cited researcher prediction modelling",
+    "client": "USYD - AAP",
+    "required_skills": [
+      "ML",
+      "Data Analytics",
+      "Python",
+      "R",
+      "Predictive Modelling",
+      "PowerBI",
+      "Machine Learning",
+      "Python or R",
+      "PowerBI/Data Visualisation"
+    ],
+    "related_disciplines": [
+      "Data Science/Analytics",
+      "AI",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P42",
+    "title": "Early stage startup building multisided platform for research management - multi party approval flows",
+    "client": "Searten",
+    "required_skills": [
+      "UI experience",
+      "Development experience",
+      "Coding",
+      "Algorithms",
+      "Cloud Computing",
+      "GenerativeAI basics",
+      "UI/Frontend",
+      "Software Development",
+      "Natural Language Models",
+      "Generative AI (basic)"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Web Development",
+      "Software Development",
+      "Cloud Computing",
+      "User Interface",
+      "User Interface/Frontend Design"
+    ]
+  },
+  {
+    "id": "P43",
+    "title": "Early stage startup building multisided platform for research management - multi party budget development tool",
+    "client": "Searten",
+    "required_skills": [
+      "UI/Frontend design",
+      "Algorithms",
+      "Web Development",
+      "Software Development",
+      "UI/Frontend Design"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Web Development",
+      "Software Development",
+      "Data Science/Analytics",
+      "UI/Frontend design"
+    ]
+  },
+  {
+    "id": "P44",
+    "title": "Early stage startup building multisided platform for research management - Research infrastructure and expert search tools",
+    "client": "Searten",
+    "required_skills": [
+      "Algorithms",
+      "Web Design",
+      "UI and Frontend Design expertise",
+      "UI/Frontend Design",
+      "Platform Integration",
+      "Chat/Communication Flows"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Web Development",
+      "Software Development",
+      "Data Science/Analytics",
+      "Artificial Intelligence",
+      "Cloud Computing"
+    ]
+  },
+  {
+    "id": "P45",
+    "title": "Building a custom Q&A knowledge base using GPT-NeoX-20B",
+    "client": "University of Sydney Techlab",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "NLP",
+      "Vector Space Models",
+      "Similarity Algorithms",
+      "Linux",
+      "Git",
+      "Cloud Computing",
+      "Data Pre-processing",
+      "LLM Fine-tuning (optional)",
+      "Cloud"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Web Development",
+      "Software Development",
+      "Data Science/Analytics",
+      "Artificial Intelligence",
+      "Information Systems"
+    ]
+  },
+  {
+    "id": "P46",
+    "title": "Scaling AI",
+    "client": "Strong Compute",
+    "required_skills": [
+      "Advanced ML knowledge",
+      "MLPerf",
+      "Distributed AI Frameworks (AnyScale",
+      "ScaleTorch",
+      "SageMaker",
+      "Skypilot)",
+      "Distributed ML Frameworks (AnyScale/ScaleTorch/SageMaker/Skypilot)",
+      "PyTorch",
+      "Linux"
+    ],
+    "related_disciplines": [
+      "Artificial Intelligence",
+      "Data Science/Analytics",
+      "Algorithms"
+    ]
+  },
+  {
+    "id": "P47",
+    "title": "Cloud GPU API Development",
+    "client": "Strong Compute",
+    "required_skills": [
+      "APIs",
+      "Git",
+      "Linux",
+      "JavaScript/Python/Elixir",
+      "Web Scraping",
+      "JavaScript or Python or Elixir"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P48",
+    "title": "Comparison between CPU and GPU workload performances in ML Benchmarks",
+    "client": "Strong Compute",
+    "required_skills": [
+      "ML",
+      "GPU/CPU Benchmarks",
+      "Python",
+      "PyTorch",
+      "ML Benchmarking",
+      "Linux",
+      "CUDA",
+      "Cost Analysis"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P49",
+    "title": "Data einops",
+    "client": "Strong Compute",
+    "required_skills": [
+      "Python",
+      "Deep Learning",
+      "Functional Programming (Rust/Haskell)",
+      "Programming Language Theory",
+      "Deep Learning (PyTorch)",
+      "DSL Design",
+      "Functional Programming (Rust/Haskell ideal)"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Data Science/Analytics",
+      "Artificial Intelligence"
+    ]
+  },
+  {
+    "id": "P50",
+    "title": "Happy New Year! (Sydney NYE Drone Light Show Simulation)",
+    "client": "Robotics Masters",
+    "required_skills": [
+      "Python",
+      "C/C++",
+      "Simulation (Unity/Gazebo)",
+      "Software Development",
+      "Physics/Robotics Knowledge",
+      "Simulation (ArduPilot/Gazebo/Unity)",
+      "Hardware/Physics"
+    ],
+    "related_disciplines": [
+      "Algorithms",
+      "Software Development",
+      "Robotics"
+    ]
+  },
+  {
+    "id": "P51",
+    "title": "Unnamed Project 100 (Open-Source Network Analysis Tool)",
+    "client": "Robotics Masters",
+    "required_skills": [
+      "Python",
+      "Web Frameworks",
+      "API calls",
+      "Linux",
+      "Databases (PostgreSQL/MySQL)",
+      "Elixir",
+      "Docker",
+      "Git",
+      "Software Development",
+      "Web Framework",
+      "API Integration",
+      "Linux CLI",
+      "Elixir (learn)"
+    ],
+    "related_disciplines": [
+      "Software Development",
+      "Web Development",
+      "Algorithms"
+    ]
+  },
+  {
+    "id": "P52",
+    "title": "Merry Lightshow Christmas! (Graphical Simulator for lightshowpi)",
+    "client": "Robotics Masters",
+    "required_skills": [
+      "Python",
+      "Simulation Technologies (Unity/HTML/etc)",
+      "Hardware/Electronics understanding",
+      "Software Development",
+      "Simulation (Unity/HTML/etc)",
+      "Hardware/Electronics"
+    ],
+    "related_disciplines": [
+      "Software Development",
+      "Web Development",
+      "Robotics"
+    ]
+  }
+]

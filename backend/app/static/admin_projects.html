@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Project Management</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+         .container {
+       max-width: 1200px;
+       margin: 0 auto;
+     }
+     
+     .nav-bar {
+       background: rgba(255, 255, 255, 0.95);
+       border-radius: 16px;
+       padding: 20px;
+       margin-bottom: 30px;
+       display: flex;
+       justify-content: flex-end;
+       gap: 20px;
+       flex-wrap: wrap;
+       box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+       backdrop-filter: blur(10px);
+     }
+     
+     .nav-link {
+       color: #2c3e50;
+       text-decoration: none;
+       font-weight: 600;
+       padding: 8px 16px;
+       border-radius: 8px;
+       transition: all 0.3s ease;
+       font-size: 0.95em;
+     }
+
+     .nav-link:hover {
+       background: linear-gradient(135deg, #667eea, #764ba2);
+       color: white;
+       transform: translateY(-1px);
+     }
+
+     .nav-link.active {
+       background: linear-gradient(135deg, #667eea, #764ba2);
+       color: white;
+     }
+    
+    h1 { 
+      text-align: center; 
+      color: #2c3e50;
+      font-size: 2.5em;
+      font-weight: 300;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 1px;
+    }
+    
+    .header-actions {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+    }
+    
+    .action-btn {
+      margin: 0 10px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      min-width: 140px;
+    }
+    
+    .action-btn:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+    
+    .action-btn.secondary {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    }
+    
+    .action-btn.secondary:hover {
+      box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+    }
+    
+    .projects-container {
+      margin-bottom: 30px;
+    }
+    
+    .project-card {
+      border: none;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 20px auto;
+      max-width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    
+    .project-id {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1.1em;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .project-title {
+      font-size: 1.4em;
+      color: #2c3e50;
+      font-weight: 600;
+      flex: 1;
+    }
+    
+    .project-client {
+      background: #e8f4fd;
+      color: #0066cc;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      border: 1px solid #b3d9ff;
+    }
+    
+    .field-group {
+      margin: 15px 0;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .field-label {
+      font-weight: 600;
+      color: #495057;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .field-value {
+      color: #6c757d;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+    
+    .skills-container {
+      margin-top: 8px;
+    }
+    
+    .skill-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-radius: 20px;
+      padding: 6px 14px;
+      margin: 4px;
+      font-size: 0.85em;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+      transition: all 0.2s ease;
+    }
+    
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+    
+    .edit-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+         .edit-btn:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+     }
+     
+     .delete-btn {
+       background: linear-gradient(135deg, #dc3545, #c82333);
+      color: white;
+      border: none;
+       padding: 12px 24px;
+       border-radius: 20px;
+      cursor: pointer;
+       font-size: 1em;
+       font-weight: 600;
+       transition: all 0.3s ease;
+       box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+     }
+     
+     .delete-btn:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+     }
+    
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #6c757d;
+      font-size: 1.1em;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+    
+    .empty-state h3 {
+      margin-bottom: 15px;
+      color: #495057;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #6c757d;
+    }
+    
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 20px 0;
+      border: 1px solid #f5c6cb;
+      text-align: center;
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 0;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: modalSlideIn 0.3s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 20px 30px;
+      border-radius: 16px 16px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    .close {
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .close:hover {
+      opacity: 0.7;
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    .schedule-section {
+      margin-bottom: 30px;
+    }
+
+    .schedule-section h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 8px;
+    }
+
+    .schedule-info {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+
+    .schedule-info p {
+      margin: 8px 0;
+      color: #495057;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #495057;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 15px;
+      justify-content: flex-end;
+      margin-top: 30px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #5a6268;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 15px; }
+      
+      h1 { font-size: 2em; }
+      
+      .header-actions { padding: 20px; }
+
+      .nav-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+      }
+      
+      .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 12px 16px;
+      }
+      
+      .action-btn {
+        display: block;
+        margin: 10px auto;
+        width: 100%;
+        max-width: 200px;
+      }
+      
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .project-card { padding: 20px; }
+       
+      .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+       
+      .action-buttons button {
+        width: 100%;
+      }
+
+      .modal-content {
+        width: 95%;
+        margin: 10% auto;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+     <div class="container">
+     <div class="nav-bar">
+       <a href="/admin/dashboard" class="nav-link">Home</a>
+       <a href="/admin" class="nav-link active">Projects</a>
+       <a href="/admin/allocation" class="nav-link">View allocation</a>
+       <a href="/logout" class="nav-link" style="color:#e74c3c;">Logout</a>
+     </div>
+     
+     <h1>Admin Project Management</h1>
+ 
+     <div class="header-actions">
+       <button class="action-btn secondary" onclick="addProject()">Add New Project</button>
+       <button class="action-btn" onclick="openScheduleModal()">Schedule Management</button>
+  </div>
+
+    <div class="projects-container" id="projectsContainer">
+    </div>
+  </div>
+
+  <!-- Schedule Management Modal -->
+  <div id="scheduleModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Set Allocation Deadline</h2>
+        <span class="close" onclick="closeScheduleModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="schedule-section">
+          <h3>Current Schedule</h3>
+          <div class="schedule-info" id="currentSchedule">
+            <p><strong>Allocation End Date:</strong> <span id="endDate">Not set</span></p>
+          </div>
+        </div>
+        
+        <div class="schedule-section">
+          <h3>Set Allocation Deadline</h3>
+          <form id="scheduleForm">
+            <div class="form-group">
+              <label for="allocationEndDate">Allocation End Date:</label>
+              <input type="datetime-local" id="allocationEndDate" name="endDate" required>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" onclick="closeScheduleModal()">Cancel</button>
+              <button type="submit" class="btn-primary">Save Deadline</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let projects = [];
+
+    async function loadProjects() {
+      try {
+         const response = await fetch("/admin/projects");
+        projects = await response.json();
+        renderProjects();
+      } catch (err) {
+        console.error("Error loading projects:", err);
+         showError("Failed to load projects: " + err.message);
+      }
+    }
+
+    function renderProjects() {
+      const container = document.getElementById("projectsContainer");
+      container.innerHTML = "";
+      
+      if (projects.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <h3>📝 No Projects Found</h3>
+            <p>Start by adding your first project using the "Add New Project" button above.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      projects.forEach((p, idx) => {
+        const card = document.createElement("div");
+        card.className = "project-card";
+        card.id = `project-${idx}`;
+
+        // Project Header with ID, Title, and Client
+        const header = document.createElement("div");
+        header.className = "project-header";
+        
+        const projectId = document.createElement("div");
+        projectId.className = "project-id";
+        projectId.textContent = p.id || 'N/A';
+        
+        const projectTitle = document.createElement("div");
+        projectTitle.className = "project-title";
+        projectTitle.textContent = p.title || 'Untitled Project';
+        
+        const projectClient = document.createElement("div");
+        projectClient.className = "project-client";
+        projectClient.textContent = p.client || 'N/A';
+        
+        header.appendChild(projectId);
+        header.appendChild(projectTitle);
+        header.appendChild(projectClient);
+        card.appendChild(header);
+
+        // Other fields (excluding id, title, client)
+        Object.entries(p).forEach(([key, value]) => {
+          if (['id', 'title', 'client'].includes(key)) return;
+          
+          const fieldGroup = document.createElement("div");
+          fieldGroup.className = "field-group";
+          
+          const label = document.createElement("div");
+          label.className = "field-label";
+          label.textContent = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+          
+          const valueDiv = document.createElement("div");
+          valueDiv.className = "field-value";
+          
+          if (key === 'required_skills' && Array.isArray(value)) {
+            const skillsContainer = document.createElement("div");
+            skillsContainer.className = "skills-container";
+            value.forEach(skill => {
+              const skillTag = document.createElement("span");
+              skillTag.className = "skill-tag";
+              skillTag.textContent = skill;
+              skillsContainer.appendChild(skillTag);
+            });
+            valueDiv.appendChild(skillsContainer);
+          } else if (Array.isArray(value)) {
+            valueDiv.textContent = value.join(", ");
+          } else if (typeof value === 'object' && value !== null) {
+            valueDiv.textContent = JSON.stringify(value, null, 2);
+            valueDiv.style.fontFamily = "monospace";
+            valueDiv.style.fontSize = "12px";
+            valueDiv.style.backgroundColor = "#f8f9fa";
+            valueDiv.style.padding = "8px";
+            valueDiv.style.borderRadius = "8px";
+            valueDiv.style.border = "1px solid #e9ecef";
+          } else {
+            valueDiv.textContent = String(value);
+          }
+          
+          fieldGroup.appendChild(label);
+          fieldGroup.appendChild(valueDiv);
+          card.appendChild(fieldGroup);
+        });
+
+                 // Action buttons container
+         const actionButtons = document.createElement("div");
+         actionButtons.className = "action-buttons";
+         actionButtons.style.display = "flex";
+         actionButtons.style.gap = "10px";
+         actionButtons.style.marginTop = "20px";
+         
+         // Edit Project button
+         const editButton = document.createElement("button");
+         editButton.className = "edit-btn";
+         editButton.textContent = "Edit";
+         editButton.style.flex = "1";
+         editButton.onclick = () => editProject(p.id);
+         
+         // Delete Project button
+         const deleteButton = document.createElement("button");
+         deleteButton.className = "delete-btn";
+         deleteButton.textContent = "Delete";
+         deleteButton.style.flex = "1";
+         deleteButton.onclick = () => deleteProject(p.id, p.title);
+         
+         actionButtons.appendChild(editButton);
+         actionButtons.appendChild(deleteButton);
+         card.appendChild(actionButtons);
+        
+        container.appendChild(card);
+      });
+    }
+
+    function editProject(projectId) {
+      // Store the project ID in localStorage for the edit page
+      localStorage.setItem("editProjectId", projectId);
+      // Redirect to the edit page
+      window.location.href = "/static/edit_project.html";
+    }
+
+         function addProject() {
+       window.location.href = "/admin/projects/new";
+     }
+     
+     async function deleteProject(projectId, projectTitle) {
+       if (!confirm(`Are you sure you want to delete project "${projectTitle}" (${projectId})? This action cannot be undone.`)) {
+         return;
+       }
+       
+       try {
+         const response = await fetch(`/admin/projects/${projectId}`, {
+           method: "DELETE"
+         });
+         
+         if (!response.ok) {
+           const errorData = await response.json();
+           throw new Error(errorData.detail || "Failed to delete project");
+         }
+         
+         alert("Project deleted successfully!");
+         loadProjects(); // Reload the projects list
+       } catch (err) {
+         console.error("Delete failed:", err);
+         alert("Failed to delete project: " + err.message);
+       }
+      }
+
+
+    function showError(message) {
+      const container = document.querySelector('.projects-container');
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error';
+      errorDiv.textContent = message;
+      container.parentNode.insertBefore(errorDiv, container);
+    }
+
+    // Schedule Management Functions
+    function openScheduleModal() {
+      document.getElementById('scheduleModal').style.display = 'block';
+      loadCurrentSchedule();
+    }
+
+    function closeScheduleModal() {
+      document.getElementById('scheduleModal').style.display = 'none';
+    }
+
+    async function loadCurrentSchedule() {
+      try {
+        const response = await fetch('/api/schedule');
+        if (response.ok) {
+          const schedule = await response.json();
+          document.getElementById('endDate').textContent = schedule.end_date || 'Not set';
+          
+          // Pre-fill form with current values
+          if (schedule.end_date) {
+            document.getElementById('allocationEndDate').value = schedule.end_date;
+          }
+        } else {
+          // If no schedule exists, show default values
+          document.getElementById('endDate').textContent = 'Not set';
+        }
+      } catch (error) {
+        console.error('Error loading schedule:', error);
+        document.getElementById('endDate').textContent = 'Error loading';
+      }
+    }
+
+    // Handle schedule form submission
+    document.getElementById('scheduleForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const scheduleData = {
+        end_date: formData.get('endDate')
+      };
+
+      try {
+        const response = await fetch('/api/schedule', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(scheduleData)
+        });
+
+        if (response.ok) {
+          alert('Allocation deadline updated successfully!');
+          loadCurrentSchedule(); // Reload the current schedule display
+        } else {
+          throw new Error('Failed to update deadline');
+        }
+      } catch (error) {
+        console.error('Error updating deadline:', error);
+        alert('Failed to update deadline: ' + error.message);
+      }
+    });
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById('scheduleModal');
+      if (event.target === modal) {
+        closeScheduleModal();
+      }
+    }
+
+    loadProjects();
+  </script>
+</body>
+</html>
+

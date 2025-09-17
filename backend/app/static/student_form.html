@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Selection Form</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: #f5f7fa; 
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .nav-bar {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-link {
+      color: #2c3e50;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.95em;
+    }
+
+    .nav-link:hover {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+    
+    h1 { 
+      text-align: center; 
+      color: #2c3e50;
+      font-size: 2.5em;
+      font-weight: 300;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 1px;
+    }
+    
+    form {
+      max-width: 100%;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    
+    .form-section {
+      margin-bottom: 30px;
+      padding: 25px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .section-title {
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      font-size: 1.3em;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e9ecef;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    
+    label { 
+      display: block; 
+      margin-bottom: 8px; 
+      font-weight: 600;
+      color: #495057;
+      font-size: 0.95em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    input[type="text"], input[type="email"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      background: white;
+    }
+    
+    input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    input[type="text"]::placeholder, input[type="email"]::placeholder, textarea::placeholder {
+      color: #adb5bd;
+    }
+    
+    .skills-container, .disciplines-container {
+      margin-top: 15px;
+    }
+    
+    .skill-item, .discipline-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+    }
+    
+         .skill-item input, .discipline-item input, .skill-item select {
+       flex: 1;
+       margin: 0 10px 0 0;
+       padding: 8px 12px;
+       border: 1px solid #dee2e6;
+       border-radius: 6px;
+     }
+     
+     .skills-grid {
+       display: grid;
+       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+       gap: 10px;
+       margin-top: 15px;
+     }
+     
+           .skill-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .skill-checkbox:hover {
+        background: #f8f9fa;
+        border-color: #667eea;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+      }
+     
+     .skill-checkbox input[type="checkbox"] {
+       margin: 0;
+       cursor: pointer;
+     }
+     
+     .skill-checkbox label {
+       cursor: pointer;
+       font-weight: 500;
+       color: #495057;
+     }
+     
+     .custom-input-section {
+       margin-top: 20px;
+       padding: 15px;
+       background: #f8f9fa;
+       border-radius: 10px;
+       border: 1px solid #e9ecef;
+     }
+     
+     .custom-input-section h4 {
+       margin: 0 0 10px 0;
+       color: #495057;
+       font-size: 1em;
+     }
+     
+     .custom-input-row {
+       display: flex;
+       gap: 10px;
+       align-items: center;
+     }
+     
+     .custom-input-row input {
+       flex: 1;
+       padding: 8px 12px;
+       border: 1px solid #dee2e6;
+       border-radius: 6px;
+     }
+     
+     @media (max-width: 768px) {
+       .skills-grid {
+         grid-template-columns: 1fr;
+       }
+       
+       .custom-input-row {
+         flex-direction: column;
+         align-items: stretch;
+       }
+       
+       .custom-input-row input {
+         margin-bottom: 10px;
+       }
+     }
+    
+    .remove-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: all 0.2s ease;
+    }
+    
+    .remove-btn:hover {
+      background: #c82333;
+      transform: scale(1.05);
+    }
+    
+    .add-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: all 0.2s ease;
+      margin-top: 10px;
+    }
+    
+    .add-btn:hover {
+      background: #218838;
+      transform: translateY(-1px);
+    }
+    
+    .project-preferences {
+      margin-top: 15px;
+    }
+    
+    .preference-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .preference-rank {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    
+    .preference-select {
+      flex: 1;
+      margin-right: 15px;
+    }
+    
+    .preference-select select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 0.95em;
+    }
+    
+    .justification {
+      margin-top: 15px;
+    }
+    
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      font-family: inherit;
+    }
+    
+    .submit-section {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 2px solid #e9ecef;
+    }
+    
+    button[type="submit"] {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      border-radius: 25px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+      width: 100%;
+    }
+    
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+    }
+    
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      border: 1px solid #c3e6cb;
+      display: none;
+      text-align: center;
+    }
+    
+    .error-message {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      border: 1px solid #f5c6cb;
+      display: none;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+      }
+      
+      .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 12px 16px;
+      }
+      
+      h1 { font-size: 2em; }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      form {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-bar">
+      <a href="/student/form" class="nav-link active">Student Form</a>
+      <a href="/projects/page" class="nav-link">Browse Projects</a>
+      <a href="/logout" class="nav-link" style="color:#e74c3c;">Logout</a>
+    </div>
+    
+    <h1>Project Selection Form</h1>
+    
+         <form id="studentForm">
+       <div class="form-section">
+         <h3 class="section-title">Group Information</h3>
+         <div class="form-row">
+           <div class="form-group full-width">
+             <label for="group_name">1. Your Group Name (TutorialCode_TutorialDayTime_GroupNumber, e.g.: COMP3888_M10_03) *</label>
+             <input type="text" id="group_name" name="group_name" placeholder="e.g., COMP3888_M10_03" required>
+           </div>
+         </div>
+       </div>
+
+       <div class="form-section">
+         <h3 class="section-title">Student Information</h3>
+         <div class="form-group">
+           <label>2. Student 1 (name, student ID, unikey, UoS code (e.g.: COMP3888)) *</label>
+           <input type="text" id="student1" name="student1" placeholder="e.g., John Smith, z1234567, z1234567, COMP3888" required>
+           <small style="color: #6c757d; font-size: 0.9em;">Note: please separate each answer with a comma</small>
+         </div>
+         <div class="form-group">
+           <label>3. Student 2 (name, student ID, unikey, UoS code (e.g.: COMP3888)) *</label>
+           <input type="text" id="student2" name="student2" placeholder="e.g., Jane Doe, z2345678, z2345678, COMP3888" required>
+           <small style="color: #6c757d; font-size: 0.9em;">Note: please separate each answer with a comma</small>
+         </div>
+         <div class="form-group">
+           <label>4. Student 3 (name, student ID, unikey, UoS code (e.g.: COMP3888)) *</label>
+           <input type="text" id="student3" name="student3" placeholder="e.g., Bob Johnson, z3456789, z3456789, COMP3888" required>
+           <small style="color: #6c757d; font-size: 0.9em;">Note: please separate each answer with a comma</small>
+         </div>
+         <div class="form-group">
+           <label>5. Student 4 (name, student ID, unikey, UoS code (e.g.: COMP3888)) *</label>
+           <input type="text" id="student4" name="student4" placeholder="e.g., Alice Brown, z4567890, z4567890, COMP3888" required>
+           <small style="color: #6c757d; font-size: 0.9em;">Note: please separate each answer with a comma</small>
+         </div>
+         <div class="form-group">
+           <label>6. Student 5 (name, student ID, unikey, UoS code (e.g.: COMP3888)) *</label>
+           <input type="text" id="student5" name="student5" placeholder="e.g., Charlie Wilson, z5678901, z5678901, COMP3888" required>
+           <small style="color: #6c757d; font-size: 0.9em;">Note: please separate each answer with a comma</small>
+         </div>
+         <div class="form-group">
+           <label>7. Student 6 (name, student ID, unikey, UoS code (e.g.: COMP3888))</label>
+           <input type="text" id="student6" name="student6" placeholder="e.g., Diana Lee, z6789012, z6789012, COMP3888">
+           <small style="color: #6c757d; font-size: 0.9em;">Note: please separate each answer with a comma (Optional)</small>
+         </div>
+         <div class="form-group">
+           <label>8. Student 7 (name, student ID, unikey, UoS code (e.g.: COMP3888))</label>
+           <input type="text" id="student7" name="student7" placeholder="e.g., Frank Miller, z7890123, z7890123, COMP3888">
+           <small style="color: #6c757d; font-size: 0.9em;">Note: please separate each answer with a comma (Optional)</small>
+         </div>
+       </div>
+
+       <div class="form-section">
+         <h3 class="section-title">Skills</h3>
+         <div class="form-group">
+           <label>14. Your skills</label>
+           <div class="skills-grid" id="skillsGrid">
+             <!-- Skills checkboxes will be rendered here -->
+           </div>
+         </div>
+       </div>
+
+
+       <div class="form-section">
+         <h3 class="section-title">WAM Distribution</h3>
+         <div class="form-row">
+           <div class="form-group">
+             <label>9. How many students in your group have WAM of HD (>=85) in the prerequisite units? (Numbers only) *</label>
+             <input type="number" id="wam_hd" name="wam_hd" min="0" max="7" placeholder="0" required>
+           </div>
+           <div class="form-group">
+             <label>10. How many students in your group have WAM of D (>=75 and <85) in the prerequisite units? (Numbers only) *</label>
+             <input type="number" id="wam_d" name="wam_d" min="0" max="7" placeholder="0" required>
+           </div>
+         </div>
+         <div class="form-row">
+           <div class="form-group">
+             <label>11. How many students in your group have WAM of CR (>=65 and <75) in the prerequisite units? (Numbers only) *</label>
+             <input type="number" id="wam_cr" name="wam_cr" min="0" max="7" placeholder="0" required>
+           </div>
+           <div class="form-group">
+             <label>12. How many students in your group have WAM of P (>=50 and <65) in the prerequisite units? (Numbers only) *</label>
+             <input type="number" id="wam_p" name="wam_p" min="0" max="7" placeholder="0" required>
+           </div>
+         </div>
+       </div>
+
+       <div class="form-section">
+         <h3 class="section-title">Additional Information</h3>
+         <div class="form-group">
+           <label>13. Is there any student enrolled in two different project units in your group? *</label>
+           <div style="display: flex; gap: 20px; margin-top: 10px;">
+             <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+               <input type="radio" name="dual_enrollment" value="Yes" required>
+               Yes
+             </label>
+             <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+               <input type="radio" name="dual_enrollment" value="No" required>
+               No
+             </label>
+           </div>
+         </div>
+       </div>
+
+       <div class="form-section">
+         <h3 class="section-title">Group Suitability</h3>
+         <div class="form-group">
+           <label>15. Briefly describe on why your group is most suitable to undertake the project preference *</label>
+           <textarea id="suitability_description" name="suitability_description" placeholder="Please explain why your group is suitable for your preferred projects..." required></textarea>
+         </div>
+       </div>
+
+      <div class="submit-section">
+        <button type="submit">Submit Application</button>
+      </div>
+    </form>
+
+    <div id="successMessage" class="success-message">
+      Your application has been submitted successfully! You will receive a confirmation email shortly.
+    </div>
+
+    <div id="errorMessage" class="error-message">
+      There was an error submitting your application. Please try again.
+    </div>
+  </div>
+
+    <script>
+    const availableSkills = [
+      "VR/AR/Unity 3D /Unreal",
+      "Web Development",
+      "Cloud Computing (AWS/AZURE/GCP)",
+      "Bioinformatics",
+      "Algorithms",
+      "Data Science/Analytics/Visualisation",
+      "Machine learning /Deep Learning",
+      "UI/UX",
+      "Database",
+      "Mobile APP",
+      "Business analysis/Risk analysis",
+      "Image Processing/Segmentation",
+      "Graph",
+      "CNN/DNN/GNN"
+    ];
+
+    let availableProjects = [];
+
+    // Load page when ready
+    document.addEventListener('DOMContentLoaded', function() {
+      renderSkillsGrid();
+    });
+    
+    function renderSkillsGrid() {
+      const grid = document.getElementById("skillsGrid");
+      grid.innerHTML = "";
+
+      // Create checkboxes for available skills
+      availableSkills.forEach(skill => {
+        const checkbox = document.createElement("div");
+        checkbox.className = "skill-checkbox";
+        
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.id = `skill-${skill}`;
+        input.name = "skills";
+        
+        const label = document.createElement("label");
+        label.setAttribute("for", `skill-${skill}`);
+        label.textContent = skill;
+        
+        checkbox.appendChild(input);
+        checkbox.appendChild(label);
+        grid.appendChild(checkbox);
+      });
+    }
+    
+    
+    function getSkills() {
+      const selectedSkills = [];
+      document.querySelectorAll('#skillsGrid input[type="checkbox"]:checked').forEach(checkbox => {
+        const skillName = checkbox.id.replace('skill-', '');
+        selectedSkills.push(skillName);
+      });
+      return selectedSkills;
+    }
+
+    
+    
+    
+         document.getElementById('studentForm').addEventListener('submit', async function(e) {
+       e.preventDefault();
+       
+       const formData = new FormData(e.target);
+       const groupData = {
+         group_name: formData.get('group_name'),
+         students: [
+           formData.get('student1'),
+           formData.get('student2'),
+           formData.get('student3'),
+           formData.get('student4'),
+           formData.get('student5'),
+           formData.get('student6'),
+           formData.get('student7')
+         ].filter(student => student && student.trim()),
+         wam_distribution: {
+           hd: parseInt(formData.get('wam_hd')),
+           d: parseInt(formData.get('wam_d')),
+           cr: parseInt(formData.get('wam_cr')),
+           p: parseInt(formData.get('wam_p'))
+         },
+         dual_enrollment: formData.get('dual_enrollment'),
+         skills: getSkills(),
+         suitability_description: formData.get('suitability_description')
+       };
+      
+      try {
+        const response = await fetch('/api/students', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(groupData)
+        });
+        
+        if (response.ok) {
+          document.getElementById('successMessage').style.display = 'block';
+          document.getElementById('errorMessage').style.display = 'none';
+          e.target.reset();
+          // Reset skills grid
+          renderSkillsGrid();
+          // Redirect to projects page after 2 seconds
+          setTimeout(() => {
+            window.location.href = '/projects/page';
+          }, 2000);
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.detail || 'Failed to submit application');
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+        document.getElementById('errorMessage').style.display = 'block';
+        document.getElementById('successMessage').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

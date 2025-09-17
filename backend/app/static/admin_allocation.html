@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allocated Groups</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: #f5f7fa; 
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .nav-bar {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-link {
+      color: #2c3e50;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.95em;
+    }
+
+    .nav-link:hover {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    
+    .action-btn {
+      background: #2c3e50;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .action-btn:hover {
+      background: #34495e;
+      transform: translateY(-2px);
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+    
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    
+    .project-id {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1.1em;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .project-title {
+      font-size: 1.3em;
+      color: #2c3e50;
+      font-weight: 600;
+      flex: 1;
+    }
+    
+    .project-client {
+      background: #e8f4fd;
+      color: #0066cc;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      border: 1px solid #b3d9ff;
+    }
+    
+    .field-group {
+      margin: 15px 0;
+    }
+    
+    .field-label {
+      font-weight: 600;
+      color: #495057;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .skills-container {
+      margin-top: 8px;
+    }
+    
+    .skill-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-radius: 20px;
+      padding: 6px 14px;
+      margin: 4px;
+      font-size: 0.85em;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+    
+    .discipline-text {
+      color: #6c757d;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+    
+    .project-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 2px solid #f0f0f0;
+    }
+    
+    .stats-info {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #667eea;
+    }
+    
+    .stat-label {
+      font-size: 0.9em;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .view-btn {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .view-btn:hover {
+      background: #5a6268;
+      transform: translateY(-1px);
+    }
+    
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: #34495e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background: #667eea;
+      transform: translateY(-2px);
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #6c757d;
+    }
+    
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      border: 1px solid #f5c6cb;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+      }
+      
+      .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 12px 16px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .project-stats {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+      }
+      
+      .stats-info {
+        justify-content: space-around;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-bar">
+      <a href="/admin/dashboard" class="nav-link">Home</a>
+      <a href="/admin" class="nav-link">Projects</a>
+      <a href="/admin/allocation" class="nav-link active">View allocation</a>
+      <a href="/logout" class="nav-link" style="color:#e74c3c;">Logout</a>
+    </div>
+    
+    <div class="header">
+      <h1>Allocated Groups</h1>
+    </div>
+    
+    <div class="action-buttons">
+      <button class="action-btn" onclick="viewUnallocated()">View Unallocated Groups</button>
+      <button class="action-btn" onclick="notifyGroups()">Notify Groups</button>
+    </div>
+    
+    <div id="loading" class="loading">
+      <h3>Loading allocation data...</h3>
+    </div>
+    
+    <div id="content" style="display: none;">
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Projects will be loaded here -->
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>&copy; 2024 Project Allocation System. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#" class="social-icon">X</a>
+        <a href="#" class="social-icon">IG</a>
+        <a href="#" class="social-icon">YT</a>
+        <a href="#" class="social-icon">LI</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let projectsData = [];
+    let studentsData = [];
+    
+    async function loadAllocationData() {
+      const loading = document.getElementById('loading');
+      const content = document.getElementById('content');
+      
+      loading.style.display = 'block';
+      content.style.display = 'none';
+      
+      try {
+        // Load projects data
+        const projectsResponse = await fetch('/api/projects');
+        projectsData = await projectsResponse.json();
+        
+        // Load students data
+        const studentsResponse = await fetch('/api/students');
+        studentsData = await studentsResponse.json();
+        
+        renderAllocationView();
+        loading.style.display = 'none';
+        content.style.display = 'block';
+        
+      } catch (error) {
+        console.error('Error loading allocation data:', error);
+        loading.style.display = 'none';
+        showError(`Failed to load allocation data: ${error.message}`);
+      }
+    }
+    
+    function renderAllocationView() {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = '';
+      
+      // Group students by project preferences
+      const projectAllocations = {};
+      
+      studentsData.forEach(student => {
+        if (student.project_preferences && Array.isArray(student.project_preferences)) {
+          student.project_preferences.forEach(pref => {
+            if (!projectAllocations[pref]) {
+              projectAllocations[pref] = [];
+            }
+            projectAllocations[pref].push(student);
+          });
+        }
+      });
+      
+      // Create project cards
+      projectsData.forEach(project => {
+        const allocatedStudents = projectAllocations[project.id] || [];
+        const groups = groupStudentsByGroup(allocatedStudents);
+        
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        
+        card.innerHTML = `
+          <div class="project-header">
+            <div class="project-id">${project.id}</div>
+            <div class="project-title">${project.title || 'Untitled Project'}</div>
+            <div class="project-client">${project.client || 'N/A'}</div>
+          </div>
+          
+          <div class="field-group">
+            <div class="field-label">Required Skills</div>
+            <div class="skills-container">
+              ${(project.required_skills || []).map(skill => 
+                `<span class="skill-tag">${skill}</span>`
+              ).join('')}
+            </div>
+          </div>
+          
+          <div class="field-group">
+            <div class="field-label">Related Disciplines</div>
+            <div class="discipline-text">
+              ${(project.related_disciplines || []).join(', ')}
+            </div>
+          </div>
+          
+          <div class="project-stats">
+            <div class="stats-info">
+              <div class="stat-item">
+                <div class="stat-number">${allocatedStudents.length}</div>
+                <div class="stat-label">Students</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">${groups.length}</div>
+                <div class="stat-label">Groups</div>
+              </div>
+            </div>
+            <button class="view-btn" onclick="viewProjectDetails('${project.id}')">View</button>
+          </div>
+        `;
+        
+        grid.appendChild(card);
+      });
+    }
+    
+    function groupStudentsByGroup(students) {
+      const groups = {};
+      students.forEach(student => {
+        const groupId = student.group_id || 'Individual';
+        if (!groups[groupId]) {
+          groups[groupId] = [];
+        }
+        groups[groupId].push(student);
+      });
+      return Object.values(groups);
+    }
+    
+    function viewUnallocated() {
+      alert('View Unallocated Groups functionality would be implemented here');
+    }
+    
+    function notifyGroups() {
+      alert('Notify Groups functionality would be implemented here');
+    }
+    
+    function viewProjectDetails(projectId) {
+      alert(`View details for project ${projectId} - This would open a detailed view`);
+    }
+    
+    function showError(message) {
+      const content = document.getElementById('content');
+      content.innerHTML = `<div class="error">${message}</div>`;
+      content.style.display = 'block';
+    }
+    
+    // Load data when page loads
+    document.addEventListener('DOMContentLoaded', loadAllocationData);
+  </script>
+</body>
+</html>

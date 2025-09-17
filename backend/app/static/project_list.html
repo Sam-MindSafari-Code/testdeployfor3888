@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Projects</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: #f5f7fa; 
+      color: #333;
+      line-height: 1.6;
+    }
+    
+         .container {
+       max-width: 1200px;
+       margin: 0 auto;
+       padding: 20px;
+     }
+     
+     .nav-bar {
+       background: rgba(255, 255, 255, 0.95);
+       border-radius: 16px;
+       padding: 20px;
+       margin-bottom: 30px;
+       display: flex;
+       justify-content: flex-end;
+       gap: 20px;
+       flex-wrap: wrap;
+       box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+       backdrop-filter: blur(10px);
+     }
+     
+     .nav-link {
+       color: #2c3e50;
+       text-decoration: none;
+       font-weight: 600;
+       padding: 8px 16px;
+       border-radius: 8px;
+       transition: all 0.3s ease;
+       font-size: 0.95em;
+     }
+
+     .nav-link:hover {
+       background: linear-gradient(135deg, #667eea, #764ba2);
+       color: white;
+       transform: translateY(-1px);
+     }
+
+     .nav-link.active {
+       background: linear-gradient(135deg, #667eea, #764ba2);
+       color: white;
+     }
+    
+    h1 { 
+      text-align: center; 
+      color: #2c3e50;
+      font-size: 2.5em;
+      font-weight: 300;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 1px;
+    }
+    
+    .main-content {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+    
+    .selected-projects-panel {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 20px;
+    }
+    
+    .selected-projects-panel h3 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 10px;
+    }
+    
+    .selected-projects-list {
+      min-height: 200px;
+      margin-bottom: 20px;
+    }
+    
+    .no-selection {
+      color: #6c757d;
+      font-style: italic;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .selected-project-item {
+      background: #f8f9fa;
+      border: 2px solid #667eea;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .selected-project-info {
+      flex: 1;
+    }
+    
+    .selected-project-id {
+      font-weight: bold;
+      color: #667eea;
+      font-size: 1.1em;
+    }
+    
+    .selected-project-title {
+      color: #6c757d;
+      font-size: 0.9em;
+      margin-top: 4px;
+    }
+    
+    .remove-project-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    
+    .remove-project-btn:hover {
+      background: #c82333;
+      transform: scale(1.1);
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+      width: 100%;
+    }
+    
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+    }
+    
+    .submit-btn:disabled {
+      background: #e9ecef;
+      color: #adb5bd;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+    
+    .projects-section {
+      flex: 1;
+    }
+    
+    .project-card {
+      border: none;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 20px auto;
+      max-width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    
+    .project-id {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1.1em;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .project-title {
+      font-size: 1.4em;
+      color: #2c3e50;
+      font-weight: 600;
+      flex: 1;
+    }
+    
+    .project-client {
+      background: #e8f4fd;
+      color: #0066cc;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      border: 1px solid #b3d9ff;
+    }
+    
+    .field-group {
+      margin: 15px 0;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .field-label {
+      font-weight: 600;
+      color: #495057;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .field-value {
+      color: #6c757d;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+    
+    .skills-container {
+      margin-top: 8px;
+    }
+    
+    .skill-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-radius: 20px;
+      padding: 6px 14px;
+      margin: 4px;
+      font-size: 0.85em;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+      transition: all 0.2s ease;
+    }
+    
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+    
+    .select-btn {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+      width: 100%;
+    }
+    
+    .select-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+    }
+    
+    .select-btn:active {
+      transform: translateY(0);
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin: 40px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    .pagination button {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      min-width: 100px;
+    }
+    
+    .pagination button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+    
+    .pagination button:disabled {
+      background: #e9ecef;
+      color: #adb5bd;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+    
+    .page-info {
+      font-size: 1.1em;
+      color: #495057;
+      font-weight: 600;
+      padding: 8px 16px;
+      background: #f8f9fa;
+      border-radius: 20px;
+      border: 2px solid #e9ecef;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #6c757d;
+    }
+    
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      border: 1px solid #f5c6cb;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+      }
+      
+      .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 12px 16px;
+      }
+      
+      h1 { font-size: 2em; }
+      
+      .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .selected-projects-panel {
+        position: static;
+        order: 2;
+      }
+      
+      .projects-section {
+        order: 1;
+      }
+      
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .project-card { padding: 20px; }
+      
+      .pagination { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-bar">
+      <a href="/student/form" class="nav-link">Student Form</a>
+      <a href="/projects/page" class="nav-link active">Browse Projects</a>
+      <a href="/logout" class="nav-link" style="color:#e74c3c;">Logout</a>
+    </div>
+    
+    <h1>Available Projects</h1>
+    
+    <div class="main-content">
+      <div class="selected-projects-panel">
+        <h3>Selected Projects (0/5)</h3>
+        <div id="selectedProjects" class="selected-projects-list">
+          <p class="no-selection">No projects selected yet</p>
+        </div>
+        <button id="submitSelection" class="submit-btn" disabled>Submit Selection</button>
+      </div>
+      
+      <div class="projects-section">
+        <div id="projects"></div>
+        
+        <div class="pagination">
+          <button id="prevBtn" onclick="previousPage()">← Previous</button>
+          <span class="page-info" id="pageInfo">Page 1 of 1</span>
+          <button id="nextBtn" onclick="nextPage()">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let allProjects = [];
+    let currentPage = 1;
+    const projectsPerPage = 5;
+    let selectedProjects = [];
+    const maxSelections = 5;
+
+    async function loadProjects() {
+      try {
+        const response = await fetch("/projects"); 
+        allProjects = await response.json();
+        currentPage = 1;
+        renderCurrentPage();
+        updatePagination();
+      } catch (err) {
+        console.error("Error loading projects:", err);
+        const container = document.getElementById("projects");
+        container.innerHTML = `<div class="error">Error loading projects: ${err.message}</div>`;
+      }
+    }
+
+    function renderCurrentPage() {
+      const container = document.getElementById("projects");
+      container.innerHTML = "";
+      
+      const startIndex = (currentPage - 1) * projectsPerPage;
+      const endIndex = startIndex + projectsPerPage;
+      const pageProjects = allProjects.slice(startIndex, endIndex);
+      
+      pageProjects.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "project-card";
+
+        // Project Header with ID, Title, and Client
+        const header = document.createElement("div");
+        header.className = "project-header";
+        
+        const projectId = document.createElement("div");
+        projectId.className = "project-id";
+        projectId.textContent = p.id || 'N/A';
+        
+        const projectTitle = document.createElement("div");
+        projectTitle.className = "project-title";
+        projectTitle.textContent = p.title || 'Untitled Project';
+        
+        const projectClient = document.createElement("div");
+        projectClient.className = "project-client";
+        projectClient.textContent = p.client || 'N/A';
+        
+        header.appendChild(projectId);
+        header.appendChild(projectTitle);
+        header.appendChild(projectClient);
+        card.appendChild(header);
+
+        // Other fields (excluding id, title, client)
+        Object.entries(p).forEach(([key, value]) => {
+          if (['id', 'title', 'client'].includes(key)) return;
+          
+          const fieldGroup = document.createElement("div");
+          fieldGroup.className = "field-group";
+          
+          const label = document.createElement("div");
+          label.className = "field-label";
+          label.textContent = key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+          
+          const valueDiv = document.createElement("div");
+          valueDiv.className = "field-value";
+          
+          if (key === 'required_skills' && Array.isArray(value)) {
+            const skillsContainer = document.createElement("div");
+            skillsContainer.className = "skills-container";
+            value.forEach(skill => {
+              const skillTag = document.createElement("span");
+              skillTag.className = "skill-tag";
+              skillTag.textContent = skill;
+              skillsContainer.appendChild(skillTag);
+            });
+            valueDiv.appendChild(skillsContainer);
+          } else if (Array.isArray(value)) {
+            valueDiv.textContent = value.join(", ");
+          } else if (typeof value === 'object' && value !== null) {
+            valueDiv.textContent = JSON.stringify(value, null, 2);
+            valueDiv.style.fontFamily = "monospace";
+            valueDiv.style.fontSize = "12px";
+            valueDiv.style.backgroundColor = "#f8f9fa";
+            valueDiv.style.padding = "8px";
+            valueDiv.style.borderRadius = "8px";
+            valueDiv.style.border = "1px solid #e9ecef";
+          } else {
+            valueDiv.textContent = String(value);
+          }
+          
+          fieldGroup.appendChild(label);
+          fieldGroup.appendChild(valueDiv);
+          card.appendChild(fieldGroup);
+        });
+
+        // Select button
+        const btn = document.createElement("button");
+        btn.className = "select-btn";
+        const isSelected = selectedProjects.some(selected => selected.id === p.id);
+        btn.textContent = isSelected ? "Selected" : "Select This Project";
+        btn.disabled = isSelected || selectedProjects.length >= maxSelections;
+        
+        if (isSelected) {
+          btn.style.background = "#6c757d";
+        }
+        
+        btn.onclick = () => {
+          if (!isSelected && selectedProjects.length < maxSelections) {
+            selectProject(p);
+          }
+        };
+        card.appendChild(btn);
+
+        container.appendChild(card);
+      });
+    }
+
+    function updatePagination() {
+      const totalPages = Math.ceil(allProjects.length / projectsPerPage);
+      const pageInfo = document.getElementById("pageInfo");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      
+      pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+    }
+
+    function previousPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        renderCurrentPage();
+        updatePagination();
+        document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function nextPage() {
+      const totalPages = Math.ceil(allProjects.length / projectsPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderCurrentPage();
+        updatePagination();
+        document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function selectProject(project) {
+      if (selectedProjects.length >= maxSelections) {
+        alert(`You can only select up to ${maxSelections} projects.`);
+        return;
+      }
+      
+      if (selectedProjects.some(selected => selected.id === project.id)) {
+        alert("This project is already selected.");
+        return;
+      }
+      
+      selectedProjects.push(project);
+      updateSelectedProjectsPanel();
+      renderCurrentPage(); // Re-render to update button states
+    }
+
+    function removeProject(projectId) {
+      selectedProjects = selectedProjects.filter(project => project.id !== projectId);
+      updateSelectedProjectsPanel();
+      renderCurrentPage(); // Re-render to update button states
+    }
+
+    function updateSelectedProjectsPanel() {
+      const panel = document.getElementById('selectedProjects');
+      const title = document.querySelector('.selected-projects-panel h3');
+      const submitBtn = document.getElementById('submitSelection');
+      
+      title.textContent = `Selected Projects (${selectedProjects.length}/${maxSelections})`;
+      
+      if (selectedProjects.length === 0) {
+        panel.innerHTML = '<p class="no-selection">No projects selected yet</p>';
+        submitBtn.disabled = true;
+      } else {
+        panel.innerHTML = selectedProjects.map((project, index) => `
+          <div class="selected-project-item">
+            <div class="selected-project-info">
+              <div class="selected-project-id">${project.id}</div>
+              <div class="selected-project-title">${project.title || 'Untitled Project'}</div>
+            </div>
+            <button class="remove-project-btn" onclick="removeProject('${project.id}')" title="Remove">×</button>
+          </div>
+        `).join('');
+        submitBtn.disabled = false;
+      }
+    }
+
+    function submitSelection() {
+      if (selectedProjects.length === 0) {
+        alert("Please select at least one project.");
+        return;
+      }
+      
+      const projectIds = selectedProjects.map(p => p.id);
+      localStorage.setItem("selectedProjectIds", JSON.stringify(projectIds));
+      
+      // Redirect to success page
+      window.location.href = "/submission/success";
+    }
+
+    // Initialize submit button event listener
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('submitSelection').addEventListener('click', submitSelection);
+    });
+
+    loadProjects();
+  </script>
+</body>
+</html>

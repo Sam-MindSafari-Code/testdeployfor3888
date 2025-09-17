@@ -1,0 +1,94 @@
+{
+  "groups": [
+    {
+      "group_id": "SOFT3888_TU12_03",
+      "students": [
+        {
+          "name": "Student A",
+          "student_id": "123456789",
+          "unikey": "abc1234",
+          "unit_code": "SOFT3888",
+          "wam": 82.5,
+          "dual_project_enrollment": false,
+          "skills": ["Web Development", "Database"]
+        },
+        {
+          "name": "Student B",
+          "student_id": "876543216",
+          "unikey": "xyz9876",
+          "unit_code": "SOFT3888",
+          "wam": 75.0,
+          "dual_project_enrollment": false,
+          "skills": ["Algorithms", "Data Science/Analytics/Visualisation"]
+        },
+        {
+          "name": "Student C",
+          "student_id": "876545678",
+          "unikey": "xxs9898",
+          "unit_code": "SOFT3888",
+          "wam": 68.0,
+          "dual_project_enrollment": false,
+          "skills": ["UI/UX", "Cloud Computing (AWS/AZURE/GCP)", "Image Processing/Segmentation"]
+        }
+      ],
+      "project_preferences": ["P07", "P11", "P08", "P09", "P01"],
+      "wam_breakdown": {
+        "HD": 2,
+        "D": 0,
+        "CR": 1,
+        "P": 0
+      },
+      "dual_project_enrollment": false,
+      "skills": [
+        "Web Development",
+        "Database",
+        "Algorithms",
+        "Data Science/Analytics/Visualisation",
+        "UI/UX",
+        "Cloud Computing (AWS/AZURE/GCP)",
+        "Image Processing/Segmentation"
+      ],
+      "justification": "We are confident and fully equipped to take on this project with our unwavering passion for web development and a proven track record in building successful projects using industry-leading tools like Next.js, React.js, SQL, AWS, etc. Our qualifications and experience make us the ideal choice for undertaking and excelling in this endeavor. Furthermore, our additional knowledge in areas such as Algorithms and Machine Learning will complement our skillset, ensuring the development of a highly successful web app."
+    },
+    {
+      "group_id": "COMP3888_M10_03",
+      "students": [
+        {
+          "name": "Student D",
+          "student_id": "112233445",
+          "unikey": "cde4567",
+          "unit_code": "SOFT3888",
+          "wam": 78.0,
+          "dual_project_enrollment": false,
+          "skills": ["Web Development", "Algorithms"]
+        },
+        {
+          "name": "Student E",
+          "student_id": "443322110",
+          "unikey": "fgh7654",
+          "unit_code": "SOFT3888",
+          "wam": 72.0,
+          "dual_project_enrollment": false,
+          "skills": ["Database", "Machine learning /Deep Learning", "UI/UX"]
+        }
+      ],
+      "project_preferences": ["P44", "P19", "P43", "P42", "P09"],
+      "wam_breakdown": {
+        "HD": 1,
+        "D": 1,
+        "CR": 0,
+        "P": 0
+      },
+      "dual_project_enrollment": false,
+      "skills": [
+        "Web Development",
+        "Algorithms",
+        "Data Science/Analytics/Visualisation",
+        "Database",
+        "Machine learning /Deep Learning",
+        "UI/UX"
+      ],
+      "justification": "With our strong technical expertise and diverse backgrounds in computer science and finance, along with adaptability to evolving requirements and efficient project management, our team can deliver high-quality solutions within the given timeframe, ensuring suitability for undertaking the project. Our innovative approach, effective communication, and commitment to rigorous testing ensure a smooth and transparent collaboration process, ultimately leading to successful outcomes for projects."
+    }
+  ]
+}

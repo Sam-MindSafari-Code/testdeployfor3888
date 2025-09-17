@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Create New Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+         .container {
+       max-width: 800px;
+       margin: 0 auto;
+     }
+     
+     .nav-bar {
+       background: rgba(255, 255, 255, 0.95);
+       border-radius: 16px;
+       padding: 20px;
+       margin-bottom: 30px;
+       display: flex;
+       justify-content: flex-end;
+       gap: 20px;
+       flex-wrap: wrap;
+       box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+       backdrop-filter: blur(10px);
+     }
+     
+     .nav-link {
+       text-decoration: none;
+       padding: 12px 24px;
+       border-radius: 20px;
+       font-weight: 600;
+       transition: all 0.3s ease;
+       color: #6c757d;
+       background: transparent;
+     }
+     
+     .nav-link:hover {
+       color: #2c3e50;
+       background: rgba(102, 126, 234, 0.1);
+       transform: translateY(-2px);
+     }
+     
+     .nav-link.active {
+       color: white;
+       background: linear-gradient(135deg, #667eea, #764ba2);
+       box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+     }
+    
+    h1 { 
+      text-align: center; 
+      color: #2c3e50;
+      font-size: 2.5em;
+      font-weight: 300;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      letter-spacing: 1px;
+    }
+    
+    form {
+      max-width: 100%;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .field { 
+      margin-top: 20px; 
+    }
+    
+    .section-title { 
+      font-weight: 600; 
+      margin: 25px 0 15px; 
+      color: #2c3e50;
+      font-size: 1.2em;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e9ecef;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    
+    label { 
+      display: block; 
+      margin-top: 15px; 
+      font-weight: 600;
+      color: #495057;
+      font-size: 0.95em;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 18px;
+      margin-top: 8px;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      background: #f8f9fa;
+    }
+    
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #667eea;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    input[type="text"]::placeholder {
+      color: #adb5bd;
+    }
+    
+    .form-actions {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .save-btn {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+      min-width: 140px;
+    }
+    
+    .save-btn:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+    }
+
+    .cancel-btn {
+      padding: 15px 30px;
+      background: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      min-width: 140px;
+    }
+    
+    .cancel-btn:hover {
+      background: #5a6268;
+      transform: translateY(-2px);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+
+
+    .checklist { 
+      border: 2px solid #e9ecef; 
+      border-radius: 16px; 
+      padding: 20px; 
+      background: #f8f9fa;
+      transition: all 0.3s ease;
+    }
+    
+    .checklist:hover {
+      border-color: #667eea;
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.1);
+    }
+    
+    .checklist-head { 
+      display: flex; 
+      gap: 12px; 
+      align-items: center; 
+      flex-wrap: wrap; 
+      position: relative; 
+      margin-bottom: 15px;
+    }
+    
+    .checklist-head input[type="text"]{ 
+      flex: 1; 
+      padding: 12px 16px; 
+      border: 2px solid #e9ecef; 
+      border-radius: 12px;
+      background: white;
+      transition: all 0.3s ease;
+    }
+    
+    .checklist-head input[type="text"]:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .small{ 
+      font-size: 13px; 
+      color: #6c757d; 
+      font-weight: 500;
+      background: #e9ecef;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid #dee2e6;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+      min-height: 20px;
+    }
+    
+    .chip {
+      position: relative;             
+      display: inline-block;
+      padding: 8px 75px 8px 16px;     
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      transition: all 0.2s ease;
+    }
+    
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    .chip button {
+      position: absolute;               
+      top: -30%;                        
+      right: 8px;                    
+      transform: translateY(-50%);
+      width: 0px;
+      height: 0px;
+      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 14px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+    
+    .chip button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .ac-panel {
+      position: absolute;
+      left: 0; 
+      right: 0;
+      top: calc(100% + 8px);
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      z-index: 20;
+      max-height: 280px;
+      overflow: auto;
+      display: none;
+    }
+    
+    .ac-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid #f8f9fa;
+    }
+    
+    .ac-item:last-child {
+      border-bottom: none;
+    }
+    
+    .ac-item input[type="checkbox"] { 
+      pointer-events: none; 
+      width: 18px;
+      height: 18px;
+      accent-color: #667eea;
+    }
+    
+    .ac-item:hover, .ac-item[aria-selected="true"] { 
+      background: #f8f9fa; 
+      padding-left: 20px;
+    }
+    
+    .ac-empty { 
+      padding: 20px; 
+      color: #6c757d; 
+      font-size: 14px; 
+      text-align: center;
+      font-style: italic;
+    }
+
+    .id-row { 
+      display: flex; 
+      gap: 15px; 
+      align-items: center; 
+      margin: 25px 0; 
+      padding: 20px;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 16px;
+      border: 2px solid #e9ecef;
+    }
+    
+    .badge { 
+      padding: 8px 16px; 
+      border-radius: 25px; 
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white; 
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    #projectId {
+      font-weight: bold; 
+      color: #2c3e50; 
+      font-size: 18px;
+      background: white;
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 2px solid #e9ecef;
+    }
+
+    .checklist-foot{ 
+      display: flex; 
+      gap: 12px; 
+      align-items: center; 
+      margin-top: 15px; 
+      flex-wrap: wrap; 
+    }
+    
+    .checklist-foot input[type="text"] {
+      flex: 1;
+      padding: 10px 14px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      background: white;
+      transition: all 0.3s ease;
+    }
+    
+    .checklist-foot input[type="text"]:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .checklist-foot button {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    }
+    
+    .checklist-foot button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+    }
+    
+    @media (max-width: 768px) {
+      body { padding: 15px; }
+      
+      h1 { font-size: 2em; }
+      
+      form { padding: 25px; }
+      
+      .checklist-head {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .id-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .form-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .save-btn,
+      .cancel-btn {
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+     <div class="container">
+     <div class="nav-bar">
+       <a href="/admin/dashboard" class="nav-link">Home</a>
+       <a href="/admin" class="nav-link">Projects</a>
+       <a href="/admin/allocation" class="nav-link">View allocation</a>
+       <a href="/logout" class="nav-link" style="color:#e74c3c;">Logout</a>
+     </div>
+     
+     <h1>Create New Project</h1>
+    <form id="newProjectForm" autocomplete="off">
+      <div class="id-row">
+        <span class="badge">Project ID</span>
+        <span id="projectId">P01</span>
+      </div>
+
+      <div class="field">
+        <label>Project Title</label>
+        <input type="text" id="projectTitle" placeholder="Enter project title" required />
+      </div>
+      
+      <div class="field">
+        <label>Client Name</label>
+        <input type="text" id="projectClient" placeholder="Enter client name" required />
+      </div>
+
+      <div class="section-title">Required Skills</div>
+      <div id="skillsContainer" class="field"></div>
+
+      <div class="section-title">Related Disciplines</div>
+      <div id="disciplinesContainer" class="field"></div>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" onclick="cancelProject()">Cancel</button>
+        <button type="submit" class="save-btn">Save Project</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function cssEscapeCompat(value) {
+      if (window.CSS && typeof window.CSS.escape === 'function') return window.CSS.escape(value);
+      return String(value).replace(/["'\\]/g, '\\$&').replace(/\s/g, '\\ ');
+    }
+
+    function initChecklist(opts){
+      const { mount, title, options, initial = [] } = opts;
+      const el = document.getElementById(mount);
+      if(!el) return { getSelected: ()=>[], setSelected: ()=>{} };
+
+      el.classList.add('checklist');
+      el.innerHTML = `
+        <div class="chips" data-role="chips"></div>
+
+        <div class="checklist-head" aria-label="${title}">
+          <input type="text" placeholder="Search ${title}…" aria-label="Search ${title}"
+                 role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="${mount}-ac">
+          <span class="small" data-role="count">Selected 0</span>
+          <div id="${mount}-ac" class="ac-panel" role="listbox" aria-label="${title} suggestions"></div>
+        </div>
+
+        <div class="checklist-foot">
+          <input type="text" placeholder="Add a custom item…" aria-label="Add a custom item"
+                 data-role="customInput">
+          <button type="button" data-act="addCustom">Add</button>
+        </div>
+      `;
+
+      const state = new Set(initial);
+      const head = el.querySelector('.checklist-head');
+      const input = head.querySelector('input[type="text"]');
+      const ac = head.querySelector('.ac-panel');
+      const chips = el.querySelector('[data-role="chips"]');
+      const count = el.querySelector('[data-role="count"]');
+      const customInput = el.querySelector('[data-role="customInput"]');
+
+      let data = [...new Set(options)];
+      let acIndex = -1;
+
+      function filterData(q){
+        const s = (q||'').trim().toLowerCase();
+        if(!s) return data.slice(0, 8);
+        return data.filter(x => x.toLowerCase().includes(s)).slice(0, 20);
+      }
+
+      function openAC(){ ac.style.display = 'block'; input.setAttribute('aria-expanded','true'); }
+      function closeAC(){ ac.style.display = 'none'; input.setAttribute('aria-expanded','false'); acIndex = -1; markACActive(); }
+
+      function renderAC(q){
+        const items = filterData(q);
+        ac.innerHTML = '';
+        if(items.length === 0){
+          ac.innerHTML = `<div class="ac-empty">No matches found</div>`;
+        } else {
+          items.forEach((opt, i)=>{
+            const checked = state.has(opt) ? 'checked' : '';
+            const row = document.createElement('div');
+            row.className = 'ac-item';
+            row.setAttribute('role','option');
+            row.setAttribute('data-value', opt);
+            row.setAttribute('aria-selected', i === acIndex ? 'true' : 'false');
+            row.innerHTML = `<input type="checkbox" ${checked} /> <span>${opt}</span>`;
+            row.addEventListener('mousedown', (e)=>{
+              e.preventDefault();
+              toggleValue(opt);
+              renderAC(input.value);
+            });
+            ac.appendChild(row);
+          });
+        }
+        openAC();
+      }
+
+      function markACActive(){
+        Array.from(ac.querySelectorAll('.ac-item')).forEach((el, idx)=>{
+          el.setAttribute('aria-selected', idx === acIndex ? 'true' : 'false');
+        });
+        const active = ac.querySelector('.ac-item[aria-selected="true"]');
+        if(active){ active.scrollIntoView({ block: 'nearest' }); }
+      }
+
+      function moveAC(delta){
+        const items = ac.querySelectorAll('.ac-item');
+        if(items.length === 0) return;
+        acIndex = (acIndex + delta + items.length) % items.length;
+        markACActive();
+      }
+
+      function activateAC(){
+        const items = ac.querySelectorAll('.ac-item');
+        if(items.length === 0 || acIndex < 0) return;
+        const el = items[acIndex];
+        const value = el.getAttribute('data-value');
+        toggleValue(value);
+        renderAC(input.value);
+      }
+
+      function toggleValue(v){
+        if(state.has(v)) state.delete(v); else state.add(v);
+        renderChips();
+        updateCount();
+      }
+
+      function renderChips(){
+        chips.innerHTML = '';
+        Array.from(state).forEach(v => {
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.innerHTML = `<span>${v}</span><button type="button" aria-label="Remove ${v}" data-val="${v}">×</button>`;
+          chips.appendChild(chip);
+        });
+
+        chips.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const value = btn.getAttribute('data-val');
+            state.delete(value);
+            renderChips();
+            updateCount();
+            const acItem = ac.querySelector(`.ac-item[data-value="${cssEscapeCompat(value)}"] input[type="checkbox"]`);
+            if(acItem) acItem.checked = false;
+          });
+        });
+      }
+
+      function updateCount(){
+        count.textContent = `Selected ${state.size}`;
+      }
+
+      input.addEventListener('input', (e)=>{
+        renderAC(e.target.value);
+        acIndex = 0;
+        markACActive();
+      });
+      input.addEventListener('focus', ()=>{
+        renderAC(input.value);
+        acIndex = 0;
+        markACActive();
+      });
+      input.addEventListener('keydown', (e)=>{
+        if(ac.style.display !== 'block' && ['ArrowDown','ArrowUp','Enter',' '].includes(e.key)){
+          renderAC(input.value);
+        }
+        if(e.key === 'ArrowDown'){ e.preventDefault(); moveAC(1); }
+        else if(e.key === 'ArrowUp'){ e.preventDefault(); moveAC(-1); }
+        else if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activateAC(); }
+        else if(e.key === 'Escape'){ closeAC(); }
+      });
+
+      document.addEventListener('click', (e)=>{
+        if(!head.contains(e.target) && !chips.contains(e.target)) closeAC();
+      });
+
+      el.querySelector('[data-act="addCustom"]').addEventListener('click', ()=>{
+        const v = (customInput.value || '').trim();
+        if(!v) return;
+        if(!data.includes(v)) data.push(v);
+        state.add(v);
+        customInput.value = '';
+        renderChips();
+        updateCount();
+        if(document.activeElement === input){ renderAC(input.value); }
+      });
+
+      renderChips();
+      updateCount();
+
+      return {
+        getSelected: ()=> Array.from(state),
+        setSelected: (arr)=>{ state.clear(); arr.forEach(x=> state.add(x)); renderChips(); updateCount(); }
+      };
+    }
+
+    async function generateProjectId() {
+      try {
+        const response = await fetch('/projects');
+        const projects = await response.json();
+        
+        if (Array.isArray(projects) && projects.length > 0) {
+          const lastId = projects[projects.length - 1].id;
+          if (lastId && lastId.match(/^P(\d+)$/)) {
+            const nextNum = parseInt(lastId.substring(1)) + 1;
+            const nextId = `P${nextNum.toString().padStart(2, '0')}`;
+            document.getElementById('projectId').textContent = nextId;
+          }
+        }
+      } catch (error) {
+        console.error('Error generating project ID:', error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await generateProjectId();
+
+      window.skillsChecklist = initChecklist({
+        mount: 'skillsContainer',
+        title: 'Required Skills',
+        options: [
+          'Python','Java','C++','SQL','HTML','CSS','JavaScript',
+          'Machine Learning','Data Analysis','Communication','Teamwork'
+        ]
+      });
+
+      window.disciplinesChecklist = initChecklist({
+        mount: 'disciplinesContainer',
+        title: 'Related Disciplines',
+        options: [
+          'Software Development','Web Development','AI','Machine Learning','Data Science',
+          'Computer Vision','NLP','Cybersecurity','Database Systems','Cloud Computing'
+        ]
+      });
+
+      document.getElementById("newProjectForm").onsubmit = async (e) => {
+        e.preventDefault();
+        
+        const title = document.getElementById("projectTitle").value.trim();
+        const client = document.getElementById("projectClient").value.trim();
+        const skills = window.skillsChecklist.getSelected();           
+        const disciplines = window.disciplinesChecklist.getSelected(); 
+
+        if(!title){ alert('Please enter Title'); return; }
+        if(!client){ alert('Please enter Client'); return; }
+        if(skills.length === 0){ alert('Please select at least one Required Skill'); return; }
+        if(disciplines.length === 0){ alert('Please select at least one Related Discipline'); return; }
+
+        try {
+          const response = await fetch('/projects');
+          const projects = await response.json();
+          
+          const newProject = {
+            id: document.getElementById("projectId").textContent,
+            title: title,
+            client: client,
+            required_skills: skills,
+            related_disciplines: disciplines
+          };
+          
+          projects.push(newProject);
+          
+          const saveResponse = await fetch('/projects', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(projects)
+          });
+          
+          if (saveResponse.ok) {
+            alert('Project saved successfully!');
+            document.getElementById("newProjectForm").reset();
+            await generateProjectId();
+            window.skillsChecklist.setSelected([]);
+            window.disciplinesChecklist.setSelected([]);
+          } else {
+            throw new Error('Failed to save project');
+          }
+        } catch (error) {
+          console.error('Error saving project:', error);
+          alert('Failed to save project: ' + error.message);
+        }
+      };
+
+      // Cancel button functionality
+      window.cancelProject = function() {
+        if (confirm("Are you sure you want to cancel? All changes will be lost.")) {
+          window.location.href = "/admin";
+        }
+      };
+    });
+  </script>
+</body>
+</html>

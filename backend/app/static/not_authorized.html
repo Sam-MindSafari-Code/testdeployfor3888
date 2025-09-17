@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Denied</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .error-box {
+      background: rgba(255,255,255,0.95);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 350px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      font-weight: 300;
+    }
+    p {
+      font-size: 1.1em;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+    a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 1em;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+    a:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="error-box">
+    <h1>403 - Access Denied</h1>
+    <p>You are not authorized to view this page.</p>
+    <a href="/login">Go back to Login</a>
+  </div>
+</body>
+</html>

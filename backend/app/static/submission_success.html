@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submission Successful</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: #f5f7fa; 
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    
+    .success-card {
+      background: white;
+      border-radius: 16px;
+      padding: 50px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      border: none;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    
+    .success-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #28a745, #20c997);
+    }
+    
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #28a745, #20c997);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+    }
+    
+    .success-icon::before {
+      content: '✓';
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+    }
+    
+    .success-title {
+      font-size: 2.2em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    
+    .success-message {
+      font-size: 1.2em;
+      color: #6c757d;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .email-notice {
+      background: #e8f4fd;
+      border: 1px solid #b3d9ff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      color: #0066cc;
+    }
+    
+    .email-notice h3 {
+      margin-bottom: 10px;
+      color: #0066cc;
+    }
+    
+    .ok-button {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      border-radius: 25px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+    
+    .ok-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      
+      .success-card {
+        padding: 30px;
+      }
+      
+      .success-title {
+        font-size: 1.8em;
+      }
+      
+      .success-message {
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="success-card">
+      <div class="success-icon"></div>
+      <h1 class="success-title">Your request has been Sent</h1>
+      <p class="success-message">Thank you for submitting your project preferences. We have received your selection and will process it accordingly.</p>
+      
+      <div class="email-notice">
+        <h3>📧 Please wait for your allocation results in your emails</h3>
+        <p>You will receive an email notification once the project allocation process is complete. Please check your email regularly for updates.</p>
+      </div>
+      
+      <button class="ok-button" onclick="closePage()">Ok, Thank you!</button>
+    </div>
+  </div>
+
+  <script>
+    function closePage() {
+      // Clear any stored selection data
+      localStorage.removeItem("selectedProjectIds");
+      // Close the current window/tab
+      window.close();
+      
+      // If window.close() doesn't work (some browsers block it), redirect to a blank page
+      setTimeout(() => {
+        if (!window.closed) {
+          window.location.href = "about:blank";
+        }
+      }, 100);
+    }
+    
+    // Auto-close after 5 seconds (optional)
+    // setTimeout(() => {
+    //   closePage();
+    // }, 5000);
+  </script>
+</body>
+</html>
