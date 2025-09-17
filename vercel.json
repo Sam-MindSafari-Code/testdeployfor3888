@@ -1,18 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "Dockerfile",
-      "use": "@vercel/docker"
-    }
-  ],
-  "routes": [
-    {
-      "src": "^/$",
-      "dest": "/login"
-    }
-  ],
-  "regions": [
-    "syd1"
-  ]
+  "routes": [{ "src": "^/$", "dest": "/login" }],
+  "regions": ["syd1"]
 }
